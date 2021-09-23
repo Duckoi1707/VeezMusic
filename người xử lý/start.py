@@ -32,7 +32,7 @@ async def _human_time_duration(seconds):
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ **Welcome {message.from_user.first_name}** \n
+        f"""<b>✨ **Chào Mừng {message.from_user.first_name}** \n
 💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) 𝗮𝗹𝗹𝗼𝘄 𝘆𝗼𝘂 𝘁𝗼 𝗽𝗹𝗮𝘆 𝗺𝘂𝘀𝗶𝗰 𝗼𝗻 𝗴𝗿𝗼𝘂𝗽𝘀 𝘁𝗵𝗿𝗼𝘂𝗴𝗵 𝘁𝗵𝗲 𝗻𝗲𝘄 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺'𝘀 𝘃𝗼𝗶𝗰𝗲 𝗰𝗵𝗮𝘁𝘀 !**
 
 💡 **𝗙𝗶𝗻𝗱 𝗼𝘂𝘁 𝗮𝗹𝗹 𝘁𝗵𝗲 𝗕𝗼𝘁'𝘀 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝗮𝗻𝗱 𝗵𝗼𝘄 𝘁𝗵𝗲𝘆 𝘄𝗼𝗿𝗸 𝗯𝘆 𝗰𝗹𝗶𝗰𝗸𝗶𝗻𝗴 𝗼𝗻 𝘁𝗵𝗲 » 📚 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝗯𝘂𝘁𝘁𝗼𝗻 !**
@@ -43,28 +43,23 @@ async def start_(client: Client, message: Message):
             [ 
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ Thêm Tao Vào Nhóm ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "❓ How to use Me", callback_data="cbhowtouse")
+                        "❓ Làm Sao Để Chạy", callback_data="cbhowtouse")
                 ],[
                     InlineKeyboardButton(
-                         "📚 Commands", callback_data="cbcmds"
+                         "📚 Danh Sách Lệnh", callback_data="cbcmds"
                     ),
                     InlineKeyboardButton(
-                        "💝 Donate", url=f"https://t.me/{OWNER_NAME}")
+                        "💝 Từ Thiện", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Hỗ Trợ Nhóm", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
-                ],[
-                    InlineKeyboardButton(
-                        "🌐 Wiki's Page", url="https://github.com/levina-lab/veezmusic/wiki/Veez-Music-Wiki's")
-                ],[
-                    InlineKeyboardButton(
-                        "🧪 Source Code 🧪", url="https://github.com/levina-lab/VeezMusic"
+                        "📣 Kênh Nhóm", url=f"https://t.me/{UPDATES_CHANNEL}"
+    
                     )
                 ]
             ]
@@ -106,7 +101,7 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="❔ HOW TO USE ME", callback_data="cbguide"
+                        text="❔ Làm Sao Để Chạy Tao", callback_data="cbguide"
                     )
                 ]
             ]
@@ -160,7 +155,7 @@ async def ping_pong(client: Client, message: Message):
     m_reply = await message.reply_text("pinging...")
     delta_ping = time() - start
     await m_reply.edit_text(
-        "🏓 `PONG!!`\n"
+        "🏓 `Trạng Thái : Ping !!`\n"
         f"⚡️ `{delta_ping * 1000:.3f} ms`"
     )
 
