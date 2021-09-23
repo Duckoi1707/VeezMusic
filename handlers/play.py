@@ -41,7 +41,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("💡 Lệnh Dành Cho Admin !", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -154,16 +154,16 @@ def r_ply(type_):
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⏹", "leave"),
+                InlineKeyboardButton("⏹", "Dừng Lại"),
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
-                InlineKeyboardButton("⏭", "skip")
+                InlineKeyboardButton("⏭", "Bỏ Qua")
             ],
             [
-                InlineKeyboardButton("📖 Playlist", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Close", "cls")
+                InlineKeyboardButton("🗑 Đóng", "cls")
             ]        
         ]
     )
@@ -212,7 +212,8 @@ async def hfmm(_, message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **music player has been activated in this chat.**\n\n💬 `{message.chat.id}`"
+            f"✅ **Trình Phát Nhạc Đã Được Khởi Chạy.**\n\n💬 `{message.chat.id}`"
+        )chat.**\n\n💬 `{message.chat.id}`"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
@@ -366,15 +367,15 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏹", "leave"),
                     InlineKeyboardButton("⏸", "puse"),
                     InlineKeyboardButton("▶️", "resume"),
-                    InlineKeyboardButton("⏭", "skip")
+                    InlineKeyboardButton("⏭", "Tiếp Tục")
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 Playlist", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Close", "cls")
+                    InlineKeyboardButton("🗑 Đóng", "cls")
                 ]        
             ]
         )
