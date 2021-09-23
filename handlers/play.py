@@ -421,7 +421,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔎 **Searching...**")
+    lel = await message.reply("🔎 **Đang Tìm Kiếm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -528,7 +528,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Searching...**")
+        await lel.edit("🔎 **Đang Tìm Kiếm...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -596,7 +596,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Đóng", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -655,7 +655,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"💡 **Danh Sách Khởi Chạy »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Đề Xuất Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
     else:
@@ -674,7 +674,7 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
+            caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
                    +f"🎧 **Request by:** {message.from_user.mention}",
             reply_markup=keyboard
         )
@@ -697,7 +697,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("💡 this is not for you !", show_alert=True)
         return
-    #await cb.message.edit("🔁 **processing...**")
+    #await cb.message.edit("🔁 **Đang Chạy...**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -757,7 +757,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
+        caption=f"💡 **Danh Sách Khởi Chạy »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
@@ -778,8 +778,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-               +f"🎧 **Request by:** {r_by.mention}",
+        caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+               +f"🎧 **Khởi Chạy Bởi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
@@ -791,7 +791,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 **processing...**")
+    lel = await message.reply("🔄 **Đang Chạy...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -845,7 +845,7 @@ async def ytplay(_, message: Message):
             f"<i>{user.first_name} was banned in this group, ask admin to unban @{ASSISTANT_NAME} manually.</i>"
         )
         return
-    await lel.edit("🔎 **Searching...**")
+    await lel.edit("🔎 **Đang Tìm Kiếm...**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -923,7 +923,7 @@ async def ytplay(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Status:** `Playing`\n" \
+            caption = f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
                     + f"🎧 **Khởi Động Bởi** {message.from_user.mention}",
                    reply_markup=keyboard,)
         os.remove("final.png")
