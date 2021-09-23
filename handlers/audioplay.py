@@ -75,7 +75,7 @@ async def stream(_, message: Message):
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
         await message.reply_photo(
             photo=f"{AUD_IMG}",
-            caption=f"🏷 **Name:** {title[:50]}\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
+            caption=f"🏷 **Tên Bài Hát:** {title[:50]}\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
                    +f"🎧 **Request by:** {costumer}",
             reply_markup=keyboard,
         )
