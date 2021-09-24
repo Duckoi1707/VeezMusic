@@ -41,7 +41,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("💡 Lệnh Chỉ Dành Cho Quản Trị Viên !", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -157,7 +157,7 @@ def r_ply(type_):
                 InlineKeyboardButton("⏹", "leave"),
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
-                InlineKeyboardButton("⏭", "skip")
+                InlineKeyboardButton("⏭", "Bỏ Qua")
             ],
             [
                 InlineKeyboardButton("📖 Danh Sách", "playlist"),
@@ -185,7 +185,8 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+        await message.reply("😕 **Khởi Động Thất Bại**\n\n» Vui lòng Thử Lại Sau")
+rst")
 
 
 @Client.on_message(
@@ -212,7 +213,7 @@ async def hfmm(_, message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **music player has been activated in this chat.**\n\n💬 `{message.chat.id}`"
+            f"✅ **Bot Âm Nhạc Đã Được Khởi Động.**\n\n💬 `{message.chat.id}`"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
@@ -582,7 +583,7 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:35]}](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Sáng Tạo** - {results[j]['duration']}\n"
+                toxxt += f" ├ 💡 **Thời Lượng** - {results[j]['duration']}\n"
                 toxxt += f" └ ⚡ __Tạo Bởi {BOT_NAME} A.I__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
@@ -670,7 +671,7 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+            message.reply("😕 **Khởi Động Thất Bại**\n\n» please turn on the voice chat first")
             return
         await message.reply_photo(
             photo="final.png",
@@ -695,7 +696,7 @@ async def lol_cb(b, cb):
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("💡 this is not for you !", show_alert=True)
+        await cb.answer("💡 Cái Này Chỉ Dành Cho Quản Trị Viên!", show_alert=True)
         return
     #await cb.message.edit("🔁 **Đang Chạy...**")
     x=int(x)
