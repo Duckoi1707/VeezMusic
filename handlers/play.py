@@ -160,10 +160,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 Playlist", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Close", "cls")
+                InlineKeyboardButton("🗑 Đóng", "cls")
             ]        
         ]
     )
@@ -370,11 +370,11 @@ async def m_cb(b, cb):
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 Playlist", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Close", "cls")
+                    InlineKeyboardButton("🗑 Đóng", "cls")
                 ]        
             ]
         )
@@ -410,7 +410,7 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("✅ music has stopped")
+            await cb.message.edit("✅ Đã Tắt Âm Nhạc")
         else:
             await cb.answer("assistant is not connected to voice chat !", show_alert=True)
 
@@ -421,7 +421,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔎 **Searching...**")
+    lel = await message.reply("🔎 **Đang Tìm Kiếm Diện Rộng...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -582,8 +582,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:35]}](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ __Powered by {BOT_NAME} A.I__\n\n"
+                toxxt += f" ├ 💡 **Sáng Tạo** - {results[j]['duration']}\n"
+                toxxt += f" └ ⚡ __Tạo Bởi {BOT_NAME} A.I__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -596,7 +596,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Đóng", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -655,7 +655,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"💡 **Danh Sách Âm Nhạc »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Thực Hiện Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
     else:
@@ -674,8 +674,8 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-                   +f"🎧 **Request by:** {message.from_user.mention}",
+            caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+                   +f"🎧 **Thực Hiện Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
         os.remove("final.png")
@@ -697,7 +697,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("💡 this is not for you !", show_alert=True)
         return
-    #await cb.message.edit("🔁 **processing...**")
+    #await cb.message.edit("🔁 **Đang Chạy...**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -757,7 +757,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
+        caption=f"💡 **Danh Sách Bài Hát Chờ »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Thực Hiện Bởi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
@@ -778,8 +778,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-               +f"🎧 **Request by:** {r_by.mention}",
+        caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+               +f"🎧 **Thực Hiện Bởi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
@@ -791,7 +791,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 **processing...**")
+    lel = await message.reply("🔄 **Đang Chờ...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -845,7 +845,7 @@ async def ytplay(_, message: Message):
             f"<i>{user.first_name} was banned in this group, ask admin to unban @{ASSISTANT_NAME} manually.</i>"
         )
         return
-    await lel.edit("🔎 **Searching...**")
+    await lel.edit("🔎 **Đang Tìm Kiếm Bài Hát...**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
