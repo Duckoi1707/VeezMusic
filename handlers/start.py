@@ -58,8 +58,20 @@ async def start_(client: Client, message: Message):
                         "👥 Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
-                
+                        "📣 Kênh Hỗ Trợ" , url   =   f   "https://t.me/ {UPDATES_CHANNEL}")
+                ], [
+
+                    InlineKeyboardButton (
+
+                        "🌐 Trang Wiki", url = "")
+
+                ], [
+
+                    InlineKeyboardButton (
+
+                        "🧪 Mã nguồn 🧪", url = ""
+
+                    
                     )
                 ]
             ]
