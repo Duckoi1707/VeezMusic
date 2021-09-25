@@ -41,7 +41,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("💡 Chỉ Quản Trị Viên Mới Thực Hiện Được !", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -160,10 +160,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 Playlist", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Close", "cls")
+                InlineKeyboardButton("🗑 Đóng", "cls")
             ]        
         ]
     )
@@ -421,7 +421,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔎 **Searching...**")
+    lel = await message.reply("🔎 **Đang Tìm Kiếm Bài Hát...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -528,7 +528,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Searching...**")
+        await lel.edit("🔎 **Đang Tìm Kiếm Bài Hát...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -582,8 +582,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ __Powered by {BOT_NAME} AI__\n\n"
+                toxxt += f" ├ 💡 **Thời Lượng** - {results[j]['duration']}\n"
+                toxxt += f" └ ⚡ Hỗ Trợ Bởi {BOT_NAME} AI__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -596,7 +596,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Đóng", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -655,7 +655,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"💡 **Danh Sách Phát...Đang Chờ »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Thực Hiện Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
     else:
@@ -674,8 +674,8 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-                   +f"🎧 **Request by:** {message.from_user.mention}",
+            caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+                   +f"🎧 **Thực Hiện Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
         os.remove("final.png")
@@ -695,7 +695,7 @@ async def lol_cb(b, cb):
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("💡 sorry, this is not for you !", show_alert=True)
+        await cb.answer("💡 Lệnh Này Không Dành Cho Bạn !", show_alert=True)
         return
     #await cb.message.edit("🔁 **processing...**")
     x=int(x)
