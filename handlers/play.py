@@ -41,7 +41,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("💡 Lệnh Này Không Dành Cho Bạn !", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -160,10 +160,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 PlayList", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Close", "cls")
+                InlineKeyboardButton("🗑 Đóng", "cls")
             ]        
         ]
     )
@@ -242,7 +242,7 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**nothing is playing ❗**")
+            await cb.message.edit("**Không Có Gì Đang Chạy ❗**")
         temp = []
         for t in queue:
             temp.append(t)
@@ -370,11 +370,11 @@ async def m_cb(b, cb):
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 PlayList", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Close", "cls")
+                    InlineKeyboardButton("🗑 Đóng", "cls")
                 ]        
             ]
         )
@@ -399,7 +399,7 @@ async def m_cb(b, cb):
                 await cb.answer("skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⫸ skipped track\n⫸ now playing : **{qeue[0][0]}**"
+                    f"⫸ skipped track\n⫸ Nhạc Đang Chạy : **{qeue[0][0]}**"
                 )
 
     elif type_ == "leave":
@@ -410,7 +410,7 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("⏹ **music has stopped !**")
+            await cb.message.edit("⏹ **Âm Nhạc Đã Tắt !**")
         else:
             await cb.answer("assistant is not connected to voice chat!", show_alert=True)
 
@@ -421,7 +421,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 **processing...**")
+    lel = await message.reply("🔄 **Đang Tìm Kiếm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -451,10 +451,10 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "🤖: i'm joined to this group for playing music on voice chat"
+                        message.chat.id, "🤖: Bot Âm Nhạc Đã Vào Nhóm Vui Lòng Cấp Quyền Cho Bot Tránh Lỗi"
                     )
                     await lel.edit(
-                        "<b>✅ helper userbot joined your chat</b>",
+                        "<b>✅ Hỗ Trợ Bot Vào Nhóm</b>",
                     )
                 except UserAlreadyParticipant:
                     pass
@@ -526,7 +526,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **finding song...**")
+        await lel.edit("🔎 **Đang Tìm Kiếm Bài Hát Yêu Cầu...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -578,8 +578,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 6:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:35]}](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ __Powered by {BOT_NAME} A.I__\n\n"
+                toxxt += f" ├ 💡 **Thời Lượng** - {results[j]['duration']}\n"
+                toxxt += f" └ ⚡ Thực Hiện Bởi {BOT_NAME} A.I__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -593,7 +593,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),
                     ],
                     [
-                        InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                        InlineKeyboardButton(text="🗑 Đóng", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -622,7 +622,7 @@ async def play(_, message: Message):
                 views = results[0]["views"]
             except Exception as e:
                 await lel.edit(
-                    "**❌ song not found.** please give a valid song name."
+                    "**❌ Bài Hát Không Được Tìm Thấy.** Hãy Thử Tìm Kiếm Lại Xem."
                 )
                 print(str(e))
                 return
@@ -650,7 +650,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}",
+            caption=f"💡 **Danh Sách Chờ...Bài Hát Số »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Khởi Chạy Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
     else:
@@ -665,12 +665,12 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("**voice chat group not active, can't play a song.**")
+            message.reply("**Cuộc Gọi Nhóm Chưa Được Bật, Vui Lòng Bật Để Thực Hiện.**")
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-                   +f"🎧 **Request by:** {message.from_user.mention}",
+            caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+                   +f"🎧 **Khởi Chạy Bởi:** {message.from_user.mention}",
             reply_markup=keyboard
         )
         os.remove("final.png")
@@ -686,13 +686,13 @@ async def lol_cb(b, cb):
     try:
         x,query,useer_id = typed_.split("|")      
     except:
-        await cb.message.edit("❌ song not found")
+        await cb.message.edit("❌ Âm Nhạc Không Tồn Tại")
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
         await cb.answer("you are not people who requested this song !", show_alert=True)
         return
-    #await cb.message.edit("🔁 **processing...**")
+    #await cb.message.edit("🔁 **Đang Tìm Kiếm...**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
