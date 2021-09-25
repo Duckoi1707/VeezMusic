@@ -17,7 +17,7 @@ async def pmPermit(client: USER, message: Message):
                 return
             await USER.send_message(
                 message.chat.id,
-            f"✨ Hello, i'm a official **music assistant of {BOT_NAME}.**\n\n❗️ **notes:**\n\n⫸ don't spam message.\n⫸ don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n👩🏻‍🔧 If you want me join to your group, send here your group link, I will joined as soon as possible.\n\n",
+            f"✨ Xin Chào  **Đây Là Trợ Lý Âm Nhạc {BOT_NAME}.**\n\n❗️ **Cảnh Báo:**\n\n⫸ Không Nhắn Tin Quá Nhiều Lần.\n⫸ Không Gửi Bất Kì Thứ Gì Cho Tôi Nếu Gửi Sẽ Bị Cấm\n\n⨀ Vào Kênh Hỗ Trợ @{UPDATES_CHANNEL} \n⨀ Vào Nhóm Hỗ Trợ @{GROUP_SUPPORT}\n\n👩🏻‍💻 Người Tạo Bot: @{OWNER_NAME}\n\n✍️ Nếu Muốn Đăng Ký VIP Độc Quyền 300ALBUM Hãy Liên Hệ Admin @OggyVn.\n\n",
             )
             return
 
