@@ -370,11 +370,11 @@ async def m_cb(b, cb):
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 Playlist", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Close", "cls")
+                    InlineKeyboardButton("🗑 Đóng", "cls")
                 ]        
             ]
         )
@@ -399,7 +399,7 @@ async def m_cb(b, cb):
                 await cb.answer("skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⫸ skipped track\n⫸ now playing : **{qeue[0][0]}**"
+                    f"⫸ Bỏ Qua Bài Hát\n⫸ now playing : **{qeue[0][0]}**"
                 )
 
     elif type_ == "leave":
@@ -410,9 +410,9 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("✅ music has stopped")
+            await cb.message.edit("✅ Âm Nhạc Đã Dừng")
         else:
-            await cb.answer("assistant is not connected to voice chat !", show_alert=True)
+            await cb.answer("Trợ Lý Không Được Kết Nối !", show_alert=True)
 
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
@@ -451,7 +451,7 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "🤖: i'm joined to this group for playing music on voice chat"
+                        message.chat.id, "🤖: BOT Đã Được John Vào Nhóm Đã Có Thể Khởi Chạy"
                     )
                     await lel.edit(
                         "<b>💡 helper userbot joined your chat</b>",
@@ -573,13 +573,13 @@ async def play(_, message: Message):
         try:
           results = YoutubeSearch(query, max_results=5).to_dict()
         except:
-          await lel.edit("😕 **song name not detected**\n\n» **please provide the name of the song you want to play**")
+          await lel.edit("😕 **Tên Bài Hát Không Hợp Lệ**\n\n» **Vui Lòng Thử Lại Với Tên Bài Hát Khác**")
         # veez project
         try:
             toxxt = "\n"
             j = 0
             useer=user_name
-            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
+            emojilist = ["Bài 1️⃣","Bài 2️⃣","Bài 3️⃣","Bài 4️⃣","Bài 5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Thời Lượng** - {results[j]['duration']}\n"
@@ -757,7 +757,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
+        caption=f"💡 **Danh Sách Chờ...Hàng Chờ Số »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời Lượng Phát:** `{duration}`\n🎧 **Thực Hiện Bởi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
@@ -778,8 +778,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **Name:** [{title[:50]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-               +f"🎧 **Request by:** {r_by.mention}",
+        caption=f"🏷 **Tên Bài Hát:** [{title[:50]}]({url})\n⏱ **Thời lượng Phát:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n" \
+               +f"🎧 **Khởi Chạy Bởi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         if path.exists("final.png"):
