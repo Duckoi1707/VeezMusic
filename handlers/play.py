@@ -46,7 +46,7 @@ def cb_admin_check(func: Callable) -> Callable:
         admemes = a.get(cb.message.chat.id)
         if cb.from_user.id in admemes:
             return await func(client, cb)
-        await cb.answer("💡 only admin can tap this button !", show_alert=True)
+        await cb.answer("💡 Cần Là Quản Trị Viên Để Chạy !", show_alert=True)
         return
 
     return decorator
@@ -123,7 +123,7 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "💡 **now playing** on {}".format(message.chat.title)
+    msg = "💡 **Hiện Đang Phát** on {}".format(message.chat.title)
     msg += "\n\n• " + now_playing
     msg += "\n• Req By " + by
     temp.pop(0)
@@ -141,13 +141,13 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "⚙ settings for **{}**".format(chat.title)
+        stats = "⚙ Cài Đặt for **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "🎚 volume: {}%\n".format(vol)
-            stats += "🎵 song played: `{}`\n".format(len(que))
-            stats += "💡 now playing: **{}**\n".format(queue[0][0])
-            stats += "🎧 request by: {}".format(queue[0][1].mention)
+            stats += "🎚 Âm Lượng: {}%\n".format(vol)
+            stats += "🎵 Danh Sách Bài Hát: `{}`\n".format(len(que))
+            stats += "💡 Tên Bài Hát: **{}**\n".format(queue[0][0])
+            stats += "🎧 Khởi Chạy Bởi: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -167,9 +167,9 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách", "playlist"),
             ],
-            [InlineKeyboardButton("🗑 Close", "cls")],
+            [InlineKeyboardButton("🗑 Hủy", "cls")],
         ]
     )
     return mar
@@ -385,9 +385,9 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách", "playlist"),
                 ],
-                [InlineKeyboardButton("🗑 Close", "cls")],
+                [InlineKeyboardButton("🗑 Đóng", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -437,7 +437,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **Searching...**")
+    lel = await message.reply("🔎 **Đang Tìm Kiếm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -543,7 +543,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Searching...**")
+        await lel.edit("🔎 **Đang Tìm Kiếm...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -607,8 +607,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}...](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ __Powered by {BOT_NAME} AI__\n\n"
+                toxxt += f" ├ 💡 **Thời Lượng** - {results[j]['duration']}\n"
+                toxxt += f" └ ⚡ Thực Hiện Bởi {BOT_NAME} AI__\n\n"
                 j += 1
             keyboard = InlineKeyboardMarkup(
                 [
@@ -631,7 +631,7 @@ async def play(_, message: Message):
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                         ),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Đóng", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -797,7 +797,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:80]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
+            caption=f"💡 **Danh Sách Chờ Hàng Chờ »** `{position}`\n\n🏷 **Tên Bài Hát:** [{title[:80]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n🎧 **Yêu Cầu Bởi:** {r_by.mention}",
             reply_markup=keyboard,
         )
     else:
@@ -816,8 +816,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:80]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
-            + f"🎧 **Request by:** {r_by.mention}",
+            caption=f"🏷 **Tên Bài Hát:** [{title[:80]}]({url})\n⏱ **Thời Lượng:** `{duration}`\n💡 **Trạng Thái:** `Playing`\n"
+            + f"🎧 **Khởi Chạy Bởi:** {r_by.mention}",
             reply_markup=keyboard,
         )
     if path.exists("final.png"):
@@ -829,7 +829,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **Searching...**")
+    lel = await message.reply("🔎 **Đang Tìm Kiếm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
