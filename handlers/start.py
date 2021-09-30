@@ -32,36 +32,36 @@ async def _human_time_duration(seconds):
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ **Welcome {message.from_user.first_name}** \n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
+        f"""<b>✨ **Xin Chào {message.from_user.first_name}** \n
+💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Đây Là Bot Hỗ Trợ Âm Nhạc Nền Tảng Telegram!**
 
-💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
+💡 **Nếu Bạn Chưa Biết Những Lệnh BOT Hãy Ấn» 📚 Hỗ Trợ Lệnh!**
 
-❔ **To know how to use this bot, please click on the » ❓ Basic Guide button!**
+❔ **Nếu Bạn Chưa Biết Cách Thêm Bot Hãy Ấn» 📖 Hướng Giẫn Thêm Trợ Lí!**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "✨ Thêm Bot Vào Nhóm ✨", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "❓ Basic Guide", callback_data="cbhowtouse")
+                        "📖 Hướng Giẫn Thêm Trợ Lý", callback_data="cbhowtouse")
                 ],[
                     InlineKeyboardButton(
-                         "📚 Commands", callback_data="cbcmds"
+                         "📚 Hỗ Trợ Lệnh", callback_data="cbcmds"
                     ),
                     InlineKeyboardButton(
-                        "💝 Donate", url=f"https://t.me/{OWNER_NAME}")
+                        "💰 Ủng Hộ ADMIN", url=f"https://t.me/{OWNER_NAME}")
                 ],[
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "⛺ Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                        "💫" Kênh Hỗ Trợ, url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/VeezMusic"
+                        "📞 Liên Hệ Mua Nhóm VIP", url="https://T.me/OggyVN"
                     )
                 ]
             ]
@@ -113,7 +113,7 @@ async def help(client: Client, message: Message):
 @Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.private & ~filters.edited)
 async def help_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>💡 Hello {message.from_user.mention} welcome to the help menu !</b>
+        f"""<b>💡 Xin Chào {message.from_user.mention} Đây Là Hỗ Trợ Lệnh Bot !</b>
 
 **in this menu you can open several available command menus, in each command menu there is also a brief explanation of each command**
 
@@ -157,7 +157,7 @@ async def ping_pong(client: Client, message: Message):
     m_reply = await message.reply_text("pinging...")
     delta_ping = time() - start
     await m_reply.edit_text(
-        "🏓 `PONG!!`\n"
+        "🏓 `Trạng Thái : Ping Là!!`\n"
         f"⚡️ `{delta_ping * 1000:.3f} ms`"
     )
 
