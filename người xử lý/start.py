@@ -61,7 +61,7 @@ async def start_(client: Client, message: Message):
                         "💫" Kênh Hỗ Trợ, url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "📞 Liên Hệ Mua Nhóm VIP", url="https://T.me/OggyVN"
+                        "🌐 Source Code", url="https://github.com/levina-lab/VeezMusic"
                     )
                 ]
             ]
