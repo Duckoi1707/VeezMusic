@@ -60,7 +60,7 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhelp"))
 async def cbhelp(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>💡 Hello there, welcome to the help menu !</b>
+        f"""<b>💡 Chào Bạn Tới Với Hỗ Trợ Menu !</b>
 
 **in this menu you can open several available command menus, in each command menu there is also a brief explanation of each command**
 
@@ -68,7 +68,7 @@ async def cbhelp(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📚 Basic Cmd", callback_data="cbbasic"),
+                    InlineKeyboardButton("📚 Lệnh Cơ Bản", callback_data="cbbasic"),
                     InlineKeyboardButton("📕 Advanced Cmd", callback_data="cbadvanced"),
                 ],
                 [
@@ -90,12 +90,12 @@ async def cbbasic(_, query: CallbackQuery):
 
 🎧 [ GROUP VC CMD ]
 
-/play (song name) - play song from youtube
+/play (Tên Bài Hát) - Tìm Kiếm Bài Hát Trên YouTube
 /ytp (song name) - play song directly from youtube 
 /stream (reply to audio) - play song using audio file
 /playlist - show the list song in queue
-/song (song name) - download song from youtube
-/search (video name) - search video from youtube detailed
+/song (Tên Bài Hát) - Tải Âm Nhạc Trên Youtube
+/search (video name)- search video from youtube detailed
 /vsong (video name) - download video from youtube detailed
 /lyric - (song name) lyrics scrapper
 /vk (song name) - download song from inline mode
@@ -113,7 +113,7 @@ async def cbbasic(_, query: CallbackQuery):
 
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🏡 Go Back", callback_data="cbhelp")]]
+            [[InlineKeyboardButton("🏡 Quay Lại", callback_data="cbhelp")]]
         ),
     )
 
