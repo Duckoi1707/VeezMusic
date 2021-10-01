@@ -424,7 +424,7 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("✅ music playback has ended")
+            await cb.message.edit("✅ Bài Hát Đã Được Dừng Lại")
         else:
             await cb.answer(
                 "assistant is not connected to voice chat !", show_alert=True
@@ -658,7 +658,7 @@ async def play(_, message: Message):
                 results[0]["views"]
             except Exception as e:
                 await lel.edit(
-                    "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+                    "😕 **Không Tìm Kiếm Thấy Tên Bài Hát**\n\n» **Vui Lòng Thử Lại Sau**"
                 )
                 print(str(e))
                 return
