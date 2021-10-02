@@ -117,7 +117,7 @@ async def playlist(client, message):
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **Hiện Đang Không Có Bài Nào Chạy**")
     temp = []
     for t in queue:
         temp.append(t)
@@ -193,7 +193,7 @@ async def settings(client, message):
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
         await message.reply(
-            "😕 **voice chat not found**\n\n» please turn on the voice chat first"
+            "😕 **Không Tìm Thấy Trò Chuyện Thoại**\n\n» Vui Lòng Bật Trò Chuyện Thoại Trước"
         )
 
 
@@ -224,7 +224,7 @@ async def music_onoff(_, message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **music player has been activated in this chat.**\n\n💬 `{message.chat.id}`"
+            f"✅ **Trình Phát Nhạc Đã Được Bật Ở Cuộc Trò Chuyện Này.**\n\n💬 `{message.chat.id}`"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
@@ -254,7 +254,7 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("❌ **no music is currently playing**")
+            await cb.message.edit("❌ **Hiện Không Có Gì Đang Phát**")
         temp = []
         for t in queue:
             temp.append(t)
@@ -467,10 +467,10 @@ async def play(_, message: Message):
                     await USER.join_chat(invitelink)
                     await USER.send_message(
                         message.chat.id,
-                        "🤖: i'm joined to this group for playing music on voice chat",
+                        "🤖: Trợ Lý Phát Nhạc Đã Vào Nhóm Đã Có Thể Bật Nhạc",
                     )
                     await lel.edit(
-                        f"✅ **userbot successfully joined this group**",
+                        f"✅ **UserBot Đã Tham Gia Thành Công**",
                     )
                 except UserAlreadyParticipant:
                     pass
@@ -757,7 +757,7 @@ async def lol_cb(b, cb):
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
             await cb.message.edit(
-                f"❌ **music with duration more than** `{DURATION_LIMIT}` **minutes, can't play !**"
+                f"❌ **Thời Lượng Quá Lớn** `{DURATION_LIMIT}` **minutes, can't play !**"
             )
             return
     except:
@@ -861,7 +861,7 @@ async def ytplay(_, message: Message):
                     await USER.join_chat(invitelink)
                     await USER.send_message(
                         message.chat.id,
-                        "🤖: i'm joined to this group for playing music in voice chat",
+                        "🤖: Trợ Lý Phát Nhạc Đã Được Thêm Vào Nhóm",
                     )
                     await lel.edit(
                         f"✅ **userbot succesfully joined this group.**",
@@ -879,7 +879,7 @@ async def ytplay(_, message: Message):
         await USER.get_chat(chid)
     except:
         await lel.edit(
-            f"💡 **userbot was banned in this group !** \n\n**ask admin to unban @{ASSISTANT_NAME} and add to this group again manually.**"
+            f"💡 **Trợ Lý Phát Nhạc Bị Cấm Ở Nhóm Này !** \n\n**Yêu Cầu Quản Trị Viên Mở Cấm @{ASSISTANT_NAME} Vui Lòng Thêm Lại Theo Cách Thủ Công.**"
         )
         return
 
@@ -907,7 +907,7 @@ async def ytplay(_, message: Message):
 
     except Exception as e:
         await lel.edit(
-            "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+            "😕 **Không Thể Tìm Thấy Bài Hát Yêu Cầu**\n\n» **Vui Lòng Tìm Kiếm Bằng Lệnh Khác Hoặc Thử Lại!**"
         )
         print(str(e))
         return
@@ -918,7 +918,7 @@ async def ytplay(_, message: Message):
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ **music with duration more than** `{DURATION_LIMIT}` **minutes, can't play !**"
+                f"❌ **Nhạc Có Thời Lượng Quá Lớn** `{DURATION_LIMIT}` **Không Thể Phát !**"
             )
             return
     except:
