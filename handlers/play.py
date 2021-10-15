@@ -486,7 +486,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **searching...**")
+    lel = await message.reply("🔎 **Tìm Kiếm Lâu Vãi L Khỏi Bật Đi...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -841,7 +841,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {r_by.mention}",
+            caption=f"💡 **Danh Sách Bài Chờ Dài Tới Mức Tao Ngán Ngẩm »** `{position}`\n\n🏷 **Tên Bài Hát Thảm Hoạ:** [{title[:35]}...]({url})\n⏱ **Thời Lượng Dài Như Đường Đời:** `{duration}`\n🎧 **Bật Bời Thằng Ngu Có Tên:** {r_by.mention}",
             reply_markup=keyboard,
         )
     else:
@@ -860,8 +860,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:65]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
-            + f"🎧 **Request by:** {r_by.mention}",
+            caption=f"🏷 **Tên Bài Hát Thảm Hoạ:** [{title[:65]}]({url})\n⏱ **Thời lượng Dài VL:** `{duration}`\n💡 **Trạng Thái Bot Bị Ép Chạy:** `Playing`\n"
+            + f"🎧 **Bật Bởi Thằng Ngu Có Tên:** {r_by.mention}",
             reply_markup=keyboard,
         )
     if path.exists("final.png"):
@@ -873,7 +873,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **searching...**")
+    lel = await message.reply("🔎 **Tìm Kiếm Hơi Lâu Mệt À Nhen...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
