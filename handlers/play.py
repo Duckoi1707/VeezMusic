@@ -158,10 +158,10 @@ def updated_stats(chat, queue, vol=100):
         stats = "⚙ Cài Đặt Nhóm **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "• volume: `{}%`\n".format(vol)
-            stats += "• song played: `{}`\n".format(len(que))
-            stats += "• now playing: **{}**\n".format(queue[0][0])
-            stats += "• request by: {}".format(queue[0][1].mention(style="md"))
+            stats += "• âm lượng: `{}%`\n".format(vol)
+            stats += "• bài hát đã chơi: `{}`\n".format(len(que))
+            stats += "• bây giờ đang chơi: **{}**\n".format(queue[0][0])
+            stats += "• yêu cầu bởi: {}".format(queue[0][1].mention(style="md"))
     else:
         stats = None
     return stats
