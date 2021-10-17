@@ -58,7 +58,7 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhelp"))
 async def cbhelp(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""✨ **Hello** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
+        f"""✨ **xin chào ** [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !
 
 » **press the button below to read the explanation and see the list of available commands !**
 
@@ -66,15 +66,15 @@ async def cbhelp(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📚 Basic Cmd", callback_data="cbbasic"),
-                    InlineKeyboardButton("📕 Advanced Cmd", callback_data="cbadvanced"),
+                    InlineKeyboardButton("📚 Cmd cơ bản", callback_data="cbbasic"),
+                    InlineKeyboardButton("📕 Cmd nâng cao", callback_data="cbadvanced"),
                 ],
                 [
-                    InlineKeyboardButton("📘 Admin Cmd", callback_data="cbadmin"),
-                    InlineKeyboardButton("📗 Sudo Cmd", callback_data="cbsudo"),
+                    InlineKeyboardButton("📘 Quản trị viê", callback_data="cbadmin"),
+                    InlineKeyboardButton("📗 ", callback_data="cbsudo"),
                 ],
-                [InlineKeyboardButton("📙 Owner Cmd", callback_data="cbowner")],
-                [InlineKeyboardButton("🔙 Go Back", callback_data="cbguide")],
+                [InlineKeyboardButton("📙 Chủ sở hữu", callback_data="cbowner")],
+                [InlineKeyboardButton("🔙 Quay lại", callback_data="cbguide")],
             ]
         ),
     )
@@ -85,11 +85,11 @@ async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 **here is the basic commands**
 
-🎧 [ GROUP VC CMD ]
+🎧 [ NHÓM ]
 
-/play (song name) - play song from youtube
-/ytp (song name) - play song directly from youtube 
-/stream (reply to audio) - play song using audio file
+/play (song name) - Tìm Kiếm Bài Hát Phát
+/ytp (song name) - Phát trực tiếp từ youtube
+/stream (reply to audio) - phát trực tiếp từ audio
 /playlist - show the list song in queue
 /song (song name) - download song from youtube
 /search (video name) - search video from youtube detailed
