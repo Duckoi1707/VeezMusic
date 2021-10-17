@@ -47,7 +47,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("💡 only admin can tap this button !", show_alert=True)
+            await cb.answer("💡 Đéo Phải Admin Mà Đòi Bật !", show_alert=True)
             return
 
     return decorator
@@ -158,13 +158,13 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "⚙ settings for **{}**".format(chat.title)
+        stats = "⚙ Cài Đặt Nhóm L **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "• volume: `{}%`\n".format(vol)
-            stats += "• song played: `{}`\n".format(len(que))
+            stats += "• Âm Lượng Điếc: `{}%`\n".format(vol)
+            stats += "• Tên Bài Hát Như Cc: `{}`\n".format(len(que))
             stats += "• now playing: **{}**\n".format(queue[0][0])
-            stats += "• request by: {}".format(queue[0][1].mention(style="md"))
+            stats += "• Bật Bởi Thằng Ngu: {}".format(queue[0][1].mention(style="md"))
     else:
         stats = None
     return stats
@@ -184,9 +184,9 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách Bài Hát L", "playlist"),
             ],
-            [InlineKeyboardButton("🗑 Close", "cls")],
+            [InlineKeyboardButton("🗑 Đóng Mẹ Menu", "cls")],
         ]
     )
     return mar
