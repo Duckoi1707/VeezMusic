@@ -163,7 +163,7 @@ def updated_stats(chat, queue, vol=100):
             stats += "\n\n"
             stats += "• Âm Lượng Điếc: `{}%`\n".format(vol)
             stats += "• Tên Bài Hát Như Cc: `{}`\n".format(len(que))
-            stats += "• now playing: **{}**\n".format(queue[0][0])
+            stats += "• Đang Quẩt Ai Đó: **{}**\n".format(queue[0][0])
             stats += "• Bật Bởi Thằng Ngu: {}".format(queue[0][1].mention(style="md"))
     else:
         stats = None
@@ -425,9 +425,9 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                    InlineKeyboardButton("📖 Danh Sách Bài Hát Dở Ẹc", "playlist"),
                 ],
-                [InlineKeyboardButton("🗑 Close", "cls")],
+                [InlineKeyboardButton("🗑 Dẹp Hết Bài Hát Cc", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -486,7 +486,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **Tìm Kiếm Lâu Vãi L Khỏi Bật Đi...**")
+    lel = await message.reply("🔎 **Đợi Tí Đang Quất Gái Quất Xong Rồi Tìm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -652,7 +652,7 @@ async def play(_, message: Message):
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}...](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Thời Lượng Bài Hát Dài VL** - `{results[j]['duration']}`\n"
-                toxxt += f" └ ⚡ Bật Bởi Bot Óc {BOT_NAME}__\n\n"
+                toxxt += f" └ ⚡ Thực Hiện Bởi Bot Đẹp Trai Tên {BOT_NAME}__\n\n"
                 j += 1
             keyboard = InlineKeyboardMarkup(
                 [
@@ -675,7 +675,7 @@ async def play(_, message: Message):
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
                         ),
                     ],
-                    [InlineKeyboardButton(text="🗑 Dẹp Mẹ Nhạc Đi", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Tắt Nhạc Đi Quất Gái", callback_data="cls")],
                 ]
             )
             await message.reply_photo(
@@ -751,7 +751,7 @@ async def play(_, message: Message):
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
             await lel.edit(
-                "😕 **voice chat not found**\n\n» please turn on the voice chat first"
+                "😕 **Trò Chuyện Đéo Bật Đòi Mở Nhạc?**\n\n» Bật Trò Chuyện Lên Rồi Hãy Bật Để Tao Nhắc Mãi Thế 😡"
             )
             return
         await message.reply_photo(
@@ -774,7 +774,7 @@ async def lol_cb(b, cb):
         x, query, useer_id = typed_.split("|")
     except:
         await cb.message.edit(
-            "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+            "😕 **Không Tìm Thấy Bài Hát Chúng Mày Yêu Cầu**\n\n» **Tìm Lại Hoặc Dẹp Mẹ Nhạc Đi**"
         )
         return
     useer_id = int(useer_id)
