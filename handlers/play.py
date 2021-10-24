@@ -428,7 +428,7 @@ async def m_cb(b, cb):
 
     elif type_ == "skip":
         nmq = "❌ no more music in __Queues__\n\n» **userbot leaving** voice chat"
-        mmk = "⏭ you skipped to the next music"
+        mmk = "⏭ Bỏ Qua Bài Hát Thành Công"
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.pytgcalls.active_calls:
