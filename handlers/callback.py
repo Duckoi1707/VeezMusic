@@ -43,11 +43,7 @@ async def cbstart(_, query: CallbackQuery):
                     InlineKeyboardButton(
                         "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/VeezMusic"
-                    )
+  
                 ],
             ]
         ),
@@ -187,12 +183,12 @@ async def cbowner(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbguide"))
 async def cbguide(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""❓ **HOW TO USE THIS BOT:**
+        f"""❓ **CÁCH SỬ DỤNG BOT NÀY:**
 
-1.) **first, add me to your group.**
-2.) **then promote me as admin and give all permissions except anonymous admin.**
-3.) **add @{ASSISTANT_NAME} to your group or type /join to invite her.**
-4.) **turn on the voice chat first before start to play music.**
+1.) **trước tiên, hãy thêm tôi vào nhóm của bạn.**
+2.) **sau đó thăng cấp tôi làm quản trị viên và cấp tất cả các quyền ngoại trừ quản trị viên ẩn danh.**
+3.) **cộng @{ASSISTANT_NAME} vào nhóm của bạn hoặc nhập / tham gia để mời cô ấy.**
+4.) **trước tiên hãy bật trò chuyện thoại trước khi bắt đầu phát nhạc..**
 
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
