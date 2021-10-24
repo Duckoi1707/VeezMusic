@@ -52,31 +52,31 @@ async def _human_time_duration(seconds):
 )
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""✨ **Welcome {message.from_user.mention()} !**\n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
+        f"""✨ **Chào mừng {message.from_user.mention()} !**\n
+💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) cho phép bạn phát nhạc trên các nhóm thông qua các cuộc trò chuyện thoại của Telegram mới!**
 
-💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
+💡 **Tìm hiểu tất cả các lệnh của Bot và cách chúng hoạt động bằng cách nhấp vào » 📚 Nút lệnh!**
 
-❔ **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
+❔ **Để biết cách sử dụng bot này, vui lòng nhấp vào » ❓ Nút Hướng dẫn Cơ bản!**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Thêm tôi vào Nhóm của bạn ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Hướng dẫn cơ bản", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
-                    InlineKeyboardButton("💝 Donate", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📚 Lệnh", callback_data="cbcmds"),
+                    InlineKeyboardButton("💝 Quyên tặng", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Nhóm chính thức", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣 Kênh chính thức", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
     
                 ],
