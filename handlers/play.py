@@ -493,7 +493,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **Khởi Chạy Tìm Kiếm...**")
+    lel = await message.reply("🔎 **Đang Tải Danh Sách Bài Hát...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
