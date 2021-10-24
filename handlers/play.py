@@ -115,9 +115,9 @@ async def playlist(client, message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("• Gʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("Nhóm Hỗ Trợ", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "• Cʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -152,10 +152,10 @@ async def playlist(client, message):
 
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "⚙ settings for **{}**".format(chat.title)
+        stats = "⚙ Cài Đặt Nhóm **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "• volume: `{}%`\n".format(vol)
+            stats += "• Âm Lượng: `{}%`\n".format(vol)
             stats += "• song played: `{}`\n".format(len(que))
             stats += "• now playing: **{}**\n".format(queue[0][0])
             stats += "• request by: {}".format(queue[0][1].mention(style="md"))
@@ -178,9 +178,9 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip"),
             ],
             [
-                InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                InlineKeyboardButton("📖 Danh Sách Nhạc", "playlist"),
             ],
-            [InlineKeyboardButton("🗑 Close", "cls")],
+            [InlineKeyboardButton("🗑 Đóng", "cls")],
         ]
     )
     return mar
@@ -493,7 +493,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔎 **searching...**")
+    lel = await message.reply("🔎 **Khởi Chạy Tìm Kiếm...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -803,9 +803,9 @@ async def lol_cb(b, cb):
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("💡 sorry this is not for you !", show_alert=True)
+        await cb.answer("💡 Xin Lỗi Yêu Cầu Thất Bại !", show_alert=True)
         return
-    await cb.answer("💡 downloading song you requested...", show_alert=True)
+    await cb.answer("💡 Đã Nhận Được Yêu Cầu Vui Lòng Đợi Trợ Lý Phát Nhạc...", show_alert=True)
     x = int(x)
     try:
         cb.message.reply_to_message.from_user.first_name
