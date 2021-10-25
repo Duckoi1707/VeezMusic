@@ -51,6 +51,7 @@ async def _human_time_duration(seconds):
     command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 async def start_(client: Client, message: Message):
+    await message.reply_text("Xin Chào Test")
     await message.reply_text(
         f"""✨ **Chào mừng {message.from_user.mention()} !**\n
 💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) cho phép bạn phát nhạc trên các nhóm thông qua các cuộc trò chuyện thoại của Telegram mới!**
