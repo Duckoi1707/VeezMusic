@@ -27,21 +27,21 @@ async def cbstart(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Thêm tôi vào Nhóm của bạnp ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Hướng dẫn cơ bản", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
-                    InlineKeyboardButton("💝 Donate", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📚 Lệnh", callback_data="cbcmds"),
+                    InlineKeyboardButton("💝 Quyên tặng", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Nhóm chính thức", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣 Kênh chính thức", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
   
                 ],
@@ -83,14 +83,14 @@ async def cbbasic(_, query: CallbackQuery):
 
 🎧 [ VOICE CHAT PLAY CMD ]
 
-/play (song name) - play song from youtube
-/ytp (song name) - play song directly from youtube 
-/stream (reply to audio) - play song using audio file
-/playlist - show the list song in queue
-/song (song name) - download song from youtube
-/search (video name) - search video from youtube detailed
-/video (video name) - download video from youtube detailed
-/lyric - (song name) lyrics scrapper
+/play (song name) - phát bài hát được tìm kiếm từ youtube
+/ytp (song name) - phát bài hát trực tiếp từ youtube 
+/stream (reply to audio) - phát bài hát bằng tệp âm thanh
+/playlist - hiển thị danh sách bài hát trong hàng đợi
+/song (song name) - tải bài hát từ youtube
+/search (video name) - tìm kiếm video chi tiết từ youtube
+/video (video name) - tải xuống video từ youtube
+/lyric - (song name) trình trích xuất lời bài hát
 
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
@@ -122,7 +122,7 @@ async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 **here is the admin commands**
 
-/player - show the music playing status
+/player - hiển thị trạng thái phát nhạc
 /pause - pause the music streaming
 /resume - resume the music was paused
 /skip - skip to the next song
@@ -279,12 +279,12 @@ async def cbhelps(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhowtouse"))
 async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""❓ **HOW TO USE THIS BOT:**
+        f"""❓ **CÁCH SỬ DỤNG BOT NÀY:**
 
-1.) **first, add me to your group.**
-2.) **then promote me as admin and give all permissions except anonymous admin.**
-3.) **add @{ASSISTANT_NAME} to your group or type /join to invite her.**
-4.) **turn on the voice chat first before start to play music.**
+1.) **trước tiên, hãy thêm tôi vào nhóm của bạn.**
+2.) **sau đó thăng cấp tôi làm quản trị viên và cấp tất cả các quyền ngoại trừ quản trị viên ẩn danh.**
+3.) **cộng @{ASSISTANT_NAME} vào nhóm của bạn hoặc nhập / tham gia để mời cô ấy.**
+4.) ** trên cuộc trò chuyện thoại trước khi bắt đầu phát nhạc.**
 
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
