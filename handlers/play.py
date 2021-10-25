@@ -128,7 +128,7 @@ async def playlist(client, message):
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **hiện không có nhạc nào đang phát**")
     temp = []
     for t in queue:
         temp.append(t)
@@ -155,10 +155,10 @@ def updated_stats(chat, queue, vol=100):
         stats = "⚙ Cài Đặt Nhóm **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "• Âm Lượng: `{}%`\n".format(vol)
-            stats += "• song played: `{}`\n".format(len(que))
-            stats += "• now playing: **{}**\n".format(queue[0][0])
-            stats += "• request by: {}".format(queue[0][1].mention(style="md"))
+            stats += "• âm lượng: `{}%`\n".format(vol)
+            stats += "• bài hát đã chơi: `{}`\n".format(len(que))
+            stats += "• bây giờ đang chơi: **{}**\n".format(queue[0][0])
+            stats += "• yêu cầu bởi: {}".format(queue[0][1].mention(style="md"))
     else:
         stats = None
     return stats
@@ -205,7 +205,7 @@ async def settings(client, message):
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
         await message.reply(
-            "😕 **voice chat not found**\n\n» please turn on the voice chat first"
+            "😕 **trò chuyện thoại không tìm thấy**\n\n» vui lòng bật trò chuyện thoại trước"
         )
 
 
@@ -235,7 +235,7 @@ async def music_onoff(_, message):
             await lel.edit("» **music player already turned on.**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
-        await lel.edit(f"✅ **music player turned on**\n\n💬 `{message.chat.id}`")
+        await lel.edit(f"✅ **máy nghe nhạc đã được bật**\n\n💬 `{message.chat.id}`")
 
     elif status in ("OFF", "off", "Off"):
         lel = await message.reply("`processing...`")
@@ -244,7 +244,7 @@ async def music_onoff(_, message):
             await lel.edit("» **music player already turned off.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
-        await lel.edit(f"✅ **music player turned off**\n\n💬 `{message.chat.id}`")
+        await lel.edit(f"✅ **máy nghe nhạc đã tắt**\n\n💬 `{message.chat.id}`")
     else:
         await message.reply_text(
             "**• usage:**\n\n `/music on` & `/music off`"
@@ -275,7 +275,7 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("❌ **no music is currently playing**")
+            await cb.message.edit("❌ **hiện không có nhạc nào đang phát**")
         temp = []
         for t in queue:
             temp.append(t)
@@ -360,7 +360,7 @@ async def m_cb(b, cb):
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("❌ **no music is currently playing**")
+            await cb.message.edit("❌ **hiện không có nhạc nào đang phát**")
         temp = []
         for t in queue:
             temp.append(t)
@@ -419,9 +419,9 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏭", "skip"),
                 ],
                 [
-                    InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                    InlineKeyboardButton("📖 DANH SÁCH PHÁ", "playlist"),
                 ],
-                [InlineKeyboardButton("🗑 Close", "cls")],
+                [InlineKeyboardButton("🗑 Gần", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -509,7 +509,7 @@ async def play(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"💡 **please add the userbot to your channel first.**",
+                        f"💡 **vui lòng thêm userbot vào kênh của bạn trước.**",
                     )
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
@@ -521,14 +521,14 @@ async def play(_, message: Message):
                 try:
                     await USER.join_chat(invitelink)
                     await lel.edit(
-                        f"✅ **userbot succesfully entered chat**",
+                        f"✅ **user bot đã được thêm thành công vào nhóm**",
                     )
                 except UserAlreadyParticipant:
                     pass
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"🔴 **Flood Wait Error** 🔴 \n\n**userbot can't join this group due to many join requests for userbot.**"
+                        f"🔴 **Lỗi chờ lũ** 🔴 \n\n**userbot can't join this group due to many join requests for userbot.**"
                         f"\n\n**or add @{ASSISTANT_NAME} to this group manually then try again.**",
                     )
     try:
@@ -648,7 +648,7 @@ async def play(_, message: Message):
             results = YoutubeSearch(query, max_results=5).to_dict()
         except:
             await lel.edit(
-                "😕 **song name not detected**\n\n» **please provide the name of the song you want to play**"
+                "😕 **tên bài hát không được phát hiện**\n\n» **vui lòng cung cấp tên bài hát bạn muốn chơi**"
             )
         try:
             toxxt = "\n"
@@ -786,7 +786,7 @@ async def lol_cb(b, cb):
         ]
     )
     
-    nofound = "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "😕 **không thể tìm thấy bài hát bạn yêu cầu**\n\n» **please provide the correct song name or include the artist's name as well**"
     
     global que
     cbd = cb.data.strip()
