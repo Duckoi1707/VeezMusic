@@ -645,7 +645,7 @@ async def play(_, message: Message):
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
 
         try:
-            results = YoutubeSearch(query, max_results=5).to_dict()
+            results = YoutubeSearch(query, max_results=6).to_dict()
         except:
             await lel.edit(
                 "😕 **tên bài hát không được phát hiện**\n\n» **vui lòng cung cấp tên bài hát bạn muốn chơi**"
