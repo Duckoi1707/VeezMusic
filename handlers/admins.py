@@ -27,7 +27,7 @@ async def _(bot: Client, cmd: Message):
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("🔙 Go Back", callback_data="cbback")]]
+    [[InlineKeyboardButton("🔙 Quay lại", callback_data="cbback")]]
 )
 
 # @Client.on_message(filters.text & ~filters.private)
@@ -48,12 +48,12 @@ async def update_admin(client, message):
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
     await message.reply_text(
-        "✅ Bot **reloaded correctly !**\n✅ **Admin list** has been **updated !**"
+        "✅ Bot **tải lại một cách chính xác !**\n✅ **Admin danh sách** đã được **cập nhật !**"
     )
 
 
 # Control Menu Of Player
-@Client.on_message(command(["control", f"control@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["battat", f"battat@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def controlset(_, message: Message):
@@ -62,15 +62,15 @@ async def controlset(_, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⏸ pause", callback_data="cbpause"),
-                    InlineKeyboardButton("▶️ resume", callback_data="cbresume"),
+                    InlineKeyboardButton("⏸ tạm ngừng", callback_data="cbpause"),
+                    InlineKeyboardButton("▶️ bản tóm tắt", callback_data="cbresume"),
                 ],
                 [
-                    InlineKeyboardButton("⏩ skip", callback_data="cbskip"),
-                    InlineKeyboardButton("⏹ stop", callback_data="cbend"),
+                    InlineKeyboardButton("⏩ nhảy", callback_data="cbskip"),
+                    InlineKeyboardButton("⏹ ngừng lại", callback_data="cbend"),
                 ],
-                [InlineKeyboardButton("⛔ anti cmd", callback_data="cbdelcmds")],
-                [InlineKeyboardButton("🗑 Close", callback_data="close")],
+                [InlineKeyboardButton("⛔ chống", callback_data="cbdelcmds")],
+                [InlineKeyboardButton("🗑 Gần", callback_data="close")],
             ]
         ),
     )
@@ -84,7 +84,7 @@ async def pause(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "paused"
     ):
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("❌ **hiện không có nhạc nào đang phát**")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
         await message.reply_text(
@@ -146,7 +146,7 @@ async def skip(_, message: Message):
         qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text("⏭ **You've skipped to the next song.**")
+    await message.reply_text("⏭ **Bạn đã bỏ qua bài hát tiếp theo.**")
 
 
 @Client.on_message(command(["auth", f"auth@{BOT_USERNAME}"]) & other_filters)
@@ -291,7 +291,7 @@ async def cbskip(_, query: CallbackQuery):
     if not qeue:
         return
     await query.edit_message_text(
-        "⏭ **You've skipped to the next song**", reply_markup=BACK_BUTTON
+        "⏭ **Bạn đã bỏ qua bài hát hãy chờ bài hát tiếp theo**", reply_markup=BACK_BUTTON
     )
 
 
@@ -302,6 +302,6 @@ async def change_volume(client, message):
     chat_id = message.chat.id
     try:
        callsmusic.pytgcalls.change_volume_call(chat_id, volume=int(range))
-       await message.reply(f"✅ **volume set to:** ```{range}%```")
+       await message.reply(f"✅ **âm lượng được đặt thành:** ```{range}%```")
     except Exception as e:
        await message.reply(f"**error:** {e}")
