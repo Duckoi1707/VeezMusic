@@ -645,7 +645,7 @@ async def play(_, message: Message):
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
 
         try:
-            results = YoutubeSearch(query, max_results=6).to_dict()
+            results = YoutubeSearch(query, max_results=9).to_dict()
         except:
             await lel.edit(
                 "😕 **tên bài hát không được phát hiện**\n\n» **vui lòng cung cấp tên bài hát bạn muốn chơi**"
@@ -654,11 +654,11 @@ async def play(_, message: Message):
             toxxt = "\n"
             j = 0
             user = user_name
-            emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]
-            while j < 6:
+            emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
+            while j < 9:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}...](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Thời Lượng** - `{results[j]['duration']}`\n"
-                toxxt += f" └ ⚡ Thực Hiện Bởi {BOT_NAME}__\n\n"
+                toxxt += f" └ ⚡ Thực Hiện {BOT_NAME}__\n\n"
                 j += 1
             keyboard = InlineKeyboardMarkup(
                 [
@@ -682,7 +682,22 @@ async def play(_, message: Message):
                         ),
                         InlineKeyboardButton(
 
-                            "5️⃣", callback_data=f"plll 5|{query}|{user_id}"
+                            "6️⃣", callback_data=f"plll 5|{query}|{user_id}"
+
+                        ),
+                        InlineKeyboardButton(
+
+                            "7️⃣", callback_data=f"plll 6|{query}|{user_id}"
+
+                        ),
+                        InlineKeyboardButton(
+
+                            "8️⃣", callback_data=f"plll 7|{query}|{user_id}"
+
+                        ),
+                        InlineKeyboardButton(
+
+                            "9️⃣", callback_data=f"plll 8|{query}|{user_id}"
 
                         ),
                     ],
