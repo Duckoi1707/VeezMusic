@@ -685,6 +685,8 @@ async def play(_, message: Message):
                             "6️⃣", callback_data=f"plll 5|{query}|{user_id}"
 
                         ),
+                     ],
+                     [
                         InlineKeyboardButton(
 
                             "7️⃣", callback_data=f"plll 6|{query}|{user_id}"
