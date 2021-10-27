@@ -654,8 +654,8 @@ async def play(_, message: Message):
             toxxt = "\n"
             j = 0
             user = user_name
-            emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]
-            while j < 5:
+            emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]
+            while j < 6:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}...](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Thời Lượng** - `{results[j]['duration']}`\n"
                 toxxt += f" └ ⚡ Thực Hiện Bởi {BOT_NAME}__\n\n"
@@ -679,6 +679,11 @@ async def play(_, message: Message):
                         ),
                         InlineKeyboardButton(
                             "5️⃣", callback_data=f"plll 4|{query}|{user_id}"
+                        ),
+                        InlineKeyboardButton(
+
+                            "5️⃣", callback_data=f"plll 5|{query}|{user_id}"
+
                         ),
                     ],
                     [InlineKeyboardButton(text="🗳️ Tạm Ẩn", callback_data="cls")],
