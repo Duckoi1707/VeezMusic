@@ -262,7 +262,7 @@ async def p_cb(b, cb):
                     "Kênh Hỗ Trợ", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ],
-            [InlineKeyboardButton("🔙 Go Back", callback_data="menu")],
+            [InlineKeyboardButton("🔙 Quay lại", callback_data="menu")],
         ]
     )
 
@@ -393,7 +393,7 @@ async def m_cb(b, cb):
             await cb.message.edit(psn, reply_markup=keyboard)
 
     elif type_ == "puse":
-        spn = "⏸ music playback has paused"
+        spn = "⏸ phát lại nhạc đã tạm dừng"
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "paused"
         ):
@@ -474,20 +474,20 @@ async def m_cb(b, cb):
             )
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}", "p", f"p@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}", "phatbaihat", f"phatbaihat@{BOT_USERNAME}"]) & ~filters.edited)
 async def play(_, message: Message):
     
     bttn = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Command Syntax", callback_data="cmdsyntax")
+                InlineKeyboardButton("Cú pháp lệnh", callback_data="cmdsyntax")
             ],[
                 InlineKeyboardButton("🗑 Close", callback_data="close")
             ]
         ]
     )
     
-    nofound = "😕 **couldn't find song you requested**\n\n» **please provide the correct song name or include the artist's name as well**"
+    nofound = "😕 **không thể tìm thấy bài hát bạn yêu cầu**\n\n» **vui lòng cung cấp tên bài hát chính xác hoặc bao gồm cả tên của nghệ sĩ**"
     
     global que
     global useer
