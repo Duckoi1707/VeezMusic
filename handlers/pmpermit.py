@@ -16,16 +16,27 @@ pchats = []
 
 
 @USER.on_message(filters.text & filters.private & ~filters.me & ~filters.bot)
+
 async def pmPermit(client: USER, message: Message):
+
     if PMPERMIT == "ENABLE":
+
         if PMSET:
+
             chat_id = message.chat.id
+
             if chat_id in pchats:
+
                 return
+
             await USER.send_message(
+
                 message.chat.id,
-                f"Xin Chào Thử Nghiệm",
+
+                f"✨ Hello {message.from_user.mention}, i'm a official **music assistant of {BOT_NAME}.**\n\n❗️ **notes:**\n\n⫸ don't spam message.\n⫸ don't send me anything confidential\n\n⨀ Join to @{UPDATES_CHANNEL} \n⨀ Join to @{GROUP_SUPPORT}\n\n👩🏻‍💻 Dev: @{OWNER_NAME}\n\n👩🏻‍🔧 If you want me join to your group, send here your group link, I will joined as soon as possible.\n\n",
+
             )
+
             return
 
 
